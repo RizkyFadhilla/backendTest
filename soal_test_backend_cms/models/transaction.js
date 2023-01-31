@@ -25,8 +25,9 @@ class ModelTransaction {
       }
     });
   }
-  static readAllTransaction(callback) {
-    let query = `SELECT * FROM "Transactions" t`;
+  static readAllTransaction(companyId, callback) {
+    let query = `SELECT * FROM "Transactions"
+    WHERE "companyId" = ${companyId}`;
     pool.query(query, (err, result) => {
       if (err) {
         console.log(err);

@@ -1,7 +1,7 @@
 const { hashPassword } = require("../helpers/bcrypt");
 const pool = require(`./connection`);
-// let password = hashPassword("123")
-let password = "123";
+let password = hashPassword("123")
+// let password = "123";
 // console.log(password)
 const userQuery = `INSERT INTO "Users" ("username", "password")
 VALUES('ucok', '${password}');

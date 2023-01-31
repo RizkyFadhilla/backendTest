@@ -37,7 +37,35 @@ class ModelCompany {
       } else {
         const company = res.rows.map((el) => {
           const { id, nama_perusahaan, kode_perusahaan, userId } = el;
-          return Factory.readCompanies(id, nama_perusahaan, kode_perusahaan, userId);
+          return Factory.readCompanies(
+            id,
+            nama_perusahaan,
+            kode_perusahaan,
+            userId
+          );
+        });
+        callback(null, company[0]);
+      }
+    });
+  }
+  static searchCompanyByUserId(userId, callback) {
+    let query = `
+    SELECT c."id", c."kode_perusahaan" , c."nama_perusahaan", c."userId"
+    FROM "Companies" c
+    WHERE c."userId" = '${userId}'
+    `;
+    pool.query(query, (err, res) => {
+      if (err) {
+        callback(err);
+      } else {
+        const company = res.rows.map((el) => {
+          const { id, nama_perusahaan, kode_perusahaan, userId } = el;
+          return Factory.readCompanies(
+            id,
+            nama_perusahaan,
+            kode_perusahaan,
+            userId
+          );
         });
         callback(null, company[0]);
       }

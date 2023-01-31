@@ -12,6 +12,7 @@ router.post("/company", Controller.createCompany);
 router.post("/barang", Controller.createBarang);
 router.get("/transaction", Controller.readAllTransaction);
 router.post("/transaction", Controller.createTransaction);
+router.get("/transaction/download", Controller.downloadCSV);
 
 // router.post("/kedua", controller.tes2);
 
